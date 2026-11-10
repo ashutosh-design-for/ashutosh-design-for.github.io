@@ -1,8 +1,8 @@
-import { FAQ, INTRO, KINDS, PLAY, PROJECTS, QUOTES, SITE, SKILLS, SOCIALS, STATS, WRITING, bySlug, type Project } from "../content";
+import { INTRO, KINDS, PLAY, PROJECTS, QUOTES, SITE, SKILLS, SOCIALS, WRITING, bySlug, type Project } from "../content";
 import { esc, mediaInfo, mediaTag, mediaUrl, pad2, roll } from "../lib/html";
 
-/** The portrait slot between the two lines of the name cycles through these */
-export const PHOTO_COUNT = 8;
+/** Portraits in the slot between the two lines of the name. One for now (static); raise it to bring the cycle back */
+export const PHOTO_COUNT = 1;
 
 /** Work grid: every case study, then two client sites, ten in all (two rows of five) */
 export const GRID = [...PROJECTS.filter((p) => p.tier === "case"), ...["kuzara-green"].flatMap((s) => bySlug(s) ?? [])].slice(0, 10);
@@ -184,31 +184,14 @@ function credits(base: string) {
 </section>`;
 }
 
-/** The advantage: three numbers, each a hairline row */
-function advantage() {
-  const rows = STATS.map(
-    (s, i) => `
-    <li class="row adv__row" data-reveal="up">
-      <span class="label row__n">[${pad2(i + 1)}]</span>
-      <span class="adv__v"><span data-count="${s.value}">${s.value}</span>${esc(s.suffix)}</span>
-      <span class="label adv__l">${esc(s.label)}</span>
-    </li>`,
-  ).join("");
-  return `
-<section class="adv page-x" data-section="advantage" aria-labelledby="adv-title">${head("adv-title", "The advantage", "Shipping shapes the <em>work</em>", "Execution")}
-  <ol class="rows">${rows}
-  </ol>
-</section>`;
-}
-
 /**
- * What I do, Credits and The advantage share one stack (sections/approach.ts): What I do sticks, the Credits collage
- * rises over it, the ink panel follows over the gap, then The advantage covers both and the page scrolls on.
+ * What I do and Credits share one stack (sections/approach.ts): What I do sticks, the Credits collage rises over
+ * it, the ink panel follows over the gap, then the page scrolls on.
  */
 function stack(base: string) {
   return `
 <div class="hstk">${approach()}${credits(base)}
-<div class="hstk__gap" aria-hidden="true"></div>${advantage()}
+<div class="hstk__gap" aria-hidden="true"></div>
 </div>`;
 }
 
@@ -249,29 +232,6 @@ function showcase(base: string) {
     <ol class="sc__list">${list}
     </ol>
   </div>
-</section>`;
-}
-
-/** Questions: eight hiring objections as native disclosure rows */
-function questions() {
-  const rows = FAQ.map(
-    (f, i) => `
-    <li class="row faq__row" data-reveal="up">
-      <details class="faq__d">
-        <summary class="faq__q">
-          <span class="label row__n">[${pad2(i + 1)}]</span>
-          <span class="label faq__t">${esc(f.q)}</span>
-          <span class="label faq__tag">${esc(f.tag)}</span>
-          <span class="faq__ic" aria-hidden="true"></span>
-        </summary>
-        <div class="faq__a"><p>${esc(f.a)}</p></div>
-      </details>
-    </li>`,
-  ).join("");
-  return `
-<section class="faq page-x" data-section="questions" aria-labelledby="faq-title">${head("faq-title", "Frequently asked questions", "Answers before the <em>call</em>", "Clarity")}
-  <ol class="rows">${rows}
-  </ol>
 </section>`;
 }
 
@@ -333,7 +293,7 @@ function voices(base: string) {
 
 const TOPICS = ["Product design", "Design system", "Frontend build", "Full-time role", "Something else"];
 
-/** Contact: the ask on ink. The form writes an email in the visitor's mail app (sections/closer.ts). */
+/** Contact: the ask on ink. The form posts to the API's /inquiries route; if that fails it offers a mailto instead (sections/closer.ts). */
 export function contact() {
   /* Each field rises in turn, as on the reference; n sets its place in the stagger */
   const rise = (n: number) => `data-reveal="up" data-delay="${(n * 0.08).toFixed(2)}"`;
@@ -348,21 +308,22 @@ export function contact() {
     </div>
     <div class="iq__main">
       <p class="iq__lede" data-reveal="lines">Every good product starts as a conversation. Tell me what you're building and where it's stuck.</p>
-      <form class="iq__form" data-inquiry>
-        ${field("Name", `<input class="iq__in" name="name" type="text" autocomplete="name" placeholder="Jane Smith">`)}
-        ${field("Company", `<input class="iq__in" name="company" type="text" autocomplete="organization" placeholder="Acme AI">`)}
+      <form class="iq__form" data-inquiry novalidate>
+        ${field("Name", `<input class="iq__in" name="name" type="text" autocomplete="name" maxlength="80" placeholder="Jane Smith">`)}
+        ${field("Email", `<input class="iq__in" name="email" type="email" autocomplete="email" maxlength="254" required aria-describedby="iq-status" placeholder="jane@acme.ai">`)}
+        ${field("Company", `<input class="iq__in" name="company" type="text" autocomplete="organization" maxlength="80" placeholder="Acme AI">`)}
         ${field(
           "Topic",
           `<select class="iq__in iq__select" name="topic"><option value="">Select topic</option>${TOPICS.map((t) => `<option>${esc(t)}</option>`).join("")}</select>`,
-          true,
         )}
-        ${field("Your message", `<textarea class="iq__in iq__area" name="message" rows="3" placeholder="What you're building, and where it's stuck"></textarea>`, true)}
-        <div class="iq__actions" ${rise(4)}>
+        ${field("Your message", `<textarea class="iq__in iq__area" name="message" rows="3" maxlength="4000" placeholder="What you're building, and where it's stuck"></textarea>`, true)}
+        <label class="iq__hp" aria-hidden="true">Website<input name="website" type="text" tabindex="-1" autocomplete="off"></label>
+        <div class="iq__actions" ${rise(5)}>
           <button class="label act iq__send" type="submit">[ ${roll("Send")} ]</button>
           ${action(SITE.booking, "Book a call", ext)}
           <button class="label act" type="button" data-copy><span aria-hidden="true">[</span><span data-copy-label>Copy email</span><span aria-hidden="true">]</span></button>
         </div>
-        <p class="label iq__fine" ${rise(5)}>Opens your mail app with this filled in. Nothing is sent from the page.</p>
+        <p class="label iq__fine" id="iq-status" role="status" aria-live="polite" data-inquiry-status ${rise(6)}>Sent from this page. I reply to the email you leave.</p>
       </form>
     </div>
   </div>
@@ -420,8 +381,8 @@ export function strip(base: string) {
 
 /**
  * Home, modelled on vedantjamwal.com (HOME-REBUILD.md): our hero, then Work, Skill(s), What I do and the
- * credits, The advantage, Show case, Questions, Writing, then the ink run of Voices, Contact and the Playground
+ * credits, Show case, Writing, then the ink run of Voices, Contact and the Playground
  * strip into the footer (appended by routes.ts).
  */
 export const home = (base: string) =>
-  [hero(base), work(base), skills(base), stack(base), showcase(base), questions(), writing(base), voices(base), contact(), strip(base)].join("");
+  [hero(base), work(base), skills(base), stack(base), showcase(base), writing(base), voices(base), contact(), strip(base)].join("");

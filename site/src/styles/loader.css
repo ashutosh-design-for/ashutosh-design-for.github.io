@@ -46,7 +46,7 @@ html.js:not([data-boot="os"]):not([data-loaded]) {
   align-items: center;
   justify-content: center;
   gap: var(--gap);
-  padding-inline: 5vw;
+  padding-inline: calc(5 * var(--vw));
 }
 .loader__name {
   width: 100%;
@@ -58,7 +58,7 @@ html.js:not([data-boot="os"]):not([data-loaded]) {
 .loader__count {
   position: absolute;
   left: 50%;
-  bottom: var(--gutter);
+  bottom: var(--edge-x);
   transform: translateX(-50%);
   font-variant-numeric: tabular-nums;
 }

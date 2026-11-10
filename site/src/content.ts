@@ -5,7 +5,7 @@
 export { PROJECTS, KINDS, bySlug, type Project, type Shot } from "./data/projects";
 export { PLAY, PLAY_KINDS, type Play } from "./data/playground";
 export { WRITING, type Post } from "./data/writing";
-export { SITE, SOCIALS, EXPERIENCE, EDUCATION, PRINCIPLES, CAPABILITIES, FACTS, QUOTES, SKILLS, STATS, FAQ, type Quote, type Skill } from "./data/site";
+export { SITE, SOCIALS, EXPERIENCE, EDUCATION, PRINCIPLES, CAPABILITIES, FACTS, QUOTES, SKILLS, type Quote, type Skill } from "./data/site";
 import media from "./data/media.json";
 
 export type MediaInfo = { w: number; h: number; video?: boolean; schematic?: boolean };

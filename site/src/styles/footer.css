@@ -7,7 +7,7 @@
   /* A fixed track: an auto one would grow to the nowrap wordmark, and fitText would then size to that */
   grid-template-columns: minmax(0, 1fr);
   gap: calc(var(--gap) * 1.6);
-  padding-block: var(--section-y) var(--gutter);
+  padding-block: var(--section-y) var(--edge-x);
 }
 .foot__top,
 .foot__bottom {
@@ -60,7 +60,7 @@
 
 .foot__mark {
   display: block;
-  font-size: var(--mark-fs, 17vw);
+  font-size: var(--mark-fs, calc(17 * var(--vw)));
   font-weight: 500;
   line-height: 0.78;
   letter-spacing: var(--track-display);

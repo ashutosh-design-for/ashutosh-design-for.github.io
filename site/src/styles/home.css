@@ -7,8 +7,8 @@
   flex-direction: column;
   min-height: 100vh;
   min-height: 100svh;
-  padding-top: calc(var(--gutter) + 72px);
-  padding-bottom: var(--gutter);
+  padding-top: calc(var(--edge-x) + 72px);
+  padding-bottom: var(--edge-x);
 }
 .hero__stage {
   flex: 1;
@@ -20,7 +20,7 @@
 .hero__fit {
   grid-column: 4 / 10;
   /* --hero-fs is set by JS so the lockup spans these six columns exactly */
-  font-size: var(--hero-fs, 9.4vw);
+  font-size: var(--hero-fs, calc(9.4 * var(--vw)));
 }
 .hero__fit,
 .hero__fit * {
@@ -279,7 +279,7 @@
 
 /* Skill(s): indexed rows; the left half names it, the right half shows images or, on the toggle, a description */
 .sk {
-  --sk-h: clamp(150px, 13vw, 210px);
+  --sk-h: clamp(150px, calc(13 * var(--vw)), 210px);
   padding-block: var(--section-y-lg) 0;
 }
 .sk__rows {
@@ -328,7 +328,7 @@
   grid-column: 7 / 13;
   min-width: 0;
   /* The strip runs into the right gutter and is cut by the page edge, as if it carried on */
-  margin-right: calc(var(--gutter) * -1);
+  margin-right: calc(var(--edge-x) * -1);
   overflow: hidden;
 }
 .sk__imgs {
@@ -382,7 +382,7 @@
   position: relative;
   display: grid;
   place-items: center;
-  padding: var(--gutter);
+  padding: var(--edge-x);
 }
 .cr__lines {
   display: grid;
@@ -405,7 +405,7 @@
   position: absolute;
   left: var(--gutter);
   right: var(--gutter);
-  bottom: var(--gutter);
+  bottom: var(--edge-x);
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -448,33 +448,8 @@
   display: none;
 }
 
-/* The advantage: three numbers on hairline rows */
-.adv {
-  padding-block: var(--section-y-lg) 0;
-}
-.adv__row {
-  display: grid;
-  grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
-  column-gap: var(--gap);
-  align-items: baseline;
-  padding-block: calc(var(--gap) * 0.9);
-}
-.adv__v {
-  grid-column: 7 / 10;
-  font-size: var(--t-h3);
-  font-weight: 500;
-  line-height: 1;
-  letter-spacing: -0.04em;
-  font-variant-numeric: tabular-nums;
-}
-.adv__l {
-  grid-column: 10 / 13;
-  text-align: right;
-}
-
 /* The stack: What I do sticks and fills the frame, Credits sticks over it, the gap gives the ink panel a screen of
-   scroll to rise in (sections/approach.ts), then The advantage slides over both. When the stack ends they all leave
-   together. Desktop only; phones and reduced motion keep plain flow. */
+   scroll to rise in (sections/approach.ts). When the stack ends they leave together. Desktop only; phones and reduced motion keep plain flow. */
 .hstk__gap {
   display: none;
 }
@@ -494,11 +469,6 @@
     display: block;
     height: 100vh;
     height: 100svh;
-  }
-  .hstk > .adv {
-    position: relative;
-    z-index: 2;
-    background: var(--paper);
   }
 }
 
@@ -579,7 +549,7 @@
   position: absolute;
   left: var(--gutter);
   right: var(--gutter);
-  bottom: var(--gutter);
+  bottom: var(--edge-x);
   z-index: 2;
   display: grid;
   grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
@@ -610,7 +580,7 @@
 }
 .sc__index {
   position: absolute;
-  top: calc(var(--gutter) * 4);
+  top: calc(var(--edge-x) * 4);
   right: var(--gutter);
   z-index: 2;
   display: grid;
@@ -663,125 +633,6 @@
   font-size: var(--t-md);
   font-weight: 500;
   letter-spacing: -0.02em;
-}
-
-/* Questions: native disclosure rows; the answer opens under the question from the half column */
-.faq {
-  interpolate-size: allow-keywords;
-  padding-block: var(--section-y-lg) 0;
-}
-.faq__q {
-  display: grid;
-  grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
-  column-gap: var(--gap);
-  align-items: baseline;
-  padding-block: calc(var(--gap) * 1.1);
-  list-style: none;
-  cursor: pointer;
-}
-.faq__q::-webkit-details-marker {
-  display: none;
-}
-.faq__t {
-  grid-column: 7 / 10;
-  font-weight: 500;
-  transition: color var(--dur-xs) var(--ease-out);
-}
-.faq__tag {
-  grid-column: 10 / 12;
-  color: var(--mute);
-}
-.faq__ic {
-  grid-column: 12 / 13;
-  justify-self: end;
-  width: 0;
-  height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 7px solid currentColor;
-  transition: transform var(--dur-s) var(--ease-out);
-}
-/* Hover: a full-bleed ink fill wipes in from the left behind the question and the type flips to paper; it wipes out to the right */
-.faq__q {
-  position: relative;
-  isolation: isolate;
-  transition: color var(--dur-s) var(--ease-out);
-}
-.faq__q::before {
-  content: "";
-  position: absolute;
-  inset: 0 calc(-1 * var(--gutter));
-  z-index: -1;
-  background: var(--ink);
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform var(--dur-s) var(--ease-out);
-}
-.faq__q:focus-visible,
-.faq__q:focus-visible .faq__tag {
-  color: var(--paper);
-}
-.faq__q:focus-visible::before {
-  transform: scaleX(1);
-  transform-origin: left;
-}
-@media (hover: hover) {
-  .faq__q:hover,
-  .faq__q:hover .faq__tag {
-    color: var(--paper);
-  }
-  .faq__q:hover::before {
-    transform: scaleX(1);
-    transform-origin: left;
-  }
-}
-.faq__tag {
-  transition: color var(--dur-s) var(--ease-out);
-}
-/* The row's hairline is drawn in ink while its answer is open */
-.faq__row {
-  position: relative;
-}
-.faq__row::after {
-  content: "";
-  position: absolute;
-  inset: auto 0 -1px;
-  height: 1px;
-  background: var(--ink);
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform var(--dur-m) var(--ease-out);
-}
-.faq__row:has(.faq__d[open])::after {
-  transform: scaleX(1);
-  transform-origin: left;
-}
-.faq__d[open] .faq__ic {
-  transform: rotate(180deg);
-}
-.faq__d::details-content {
-  block-size: 0;
-  overflow: clip;
-  transition:
-    block-size var(--dur-s) var(--ease-out),
-    content-visibility var(--dur-s) allow-discrete;
-}
-.faq__d[open]::details-content {
-  block-size: auto;
-}
-.faq__a {
-  display: grid;
-  grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
-  column-gap: var(--gap);
-  padding-bottom: calc(var(--gap) * 1.6);
-}
-.faq__a p {
-  grid-column: 7 / 12;
-  max-width: 44ch;
-  font-size: var(--t-md);
-  line-height: 1.25;
-  letter-spacing: -0.015em;
-  color: var(--ink-2);
 }
 
 /* Writing: the posts as indexed rows */
@@ -1114,6 +965,32 @@ a.wr__link:is(:hover, :focus-visible) .wr__img img {
   grid-column: 1 / -1;
   color: var(--mute);
 }
+/* Sending, sent and failed read at full ink so the outcome is not lost in the fine print */
+.iq__fine[data-state="sending"],
+.iq__fine[data-state="sent"],
+.iq__fine[data-state="error"] {
+  color: var(--ink);
+}
+.iq__fine a {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+.iq__in[aria-invalid="true"] {
+  border-bottom-color: var(--ink);
+  border-bottom-style: dashed;
+}
+.iq__send[aria-busy="true"] {
+  opacity: 0.5;
+  cursor: progress;
+}
+/* Honeypot: off screen for people, still in the DOM for bots that fill every field */
+.iq__hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
 
 @media (max-width: 1023px) {
   .hh__t {
@@ -1149,21 +1026,11 @@ a.wr__link:is(:hover, :focus-visible) .wr__img img {
     min-height: 70vh;
     min-height: 70svh;
   }
-  .faq__t {
-    grid-column: 4 / 10;
-  }
-  .faq__a p,
   .wr__main {
     grid-column: 4 / 11;
   }
   .row__n {
     grid-column: 1 / 4;
-  }
-  .adv__v {
-    grid-column: 4 / 8;
-  }
-  .adv__l {
-    grid-column: 8 / 13;
   }
   .iq__side,
   .iq__main {
@@ -1177,26 +1044,6 @@ a.wr__link:is(:hover, :focus-visible) .wr__img img {
   .row__n {
     grid-column: 1 / 2;
   }
-  .adv__v {
-    grid-column: 2 / 5;
-  }
-  .adv__l {
-    grid-column: 2 / 5;
-    margin-top: 0.4em;
-    text-align: left;
-  }
-  .faq__t {
-    grid-column: 2 / 4;
-  }
-  .faq__tag {
-    grid-column: 2 / 5;
-    grid-row: 2;
-    margin-top: 0.4em;
-  }
-  .faq__ic {
-    grid-column: 4 / 5;
-  }
-  .faq__a p,
   .wr__main {
     grid-column: 2 / 5;
   }
@@ -1215,7 +1062,7 @@ a.wr__link:is(:hover, :focus-visible) .wr__img img {
 
 /* Playground ticker: a flat strip drifting left, driven by sections/ticker.ts. Without JS, or with reduced motion, it stays a plain scrollable row. */
 .tk {
-  --tk-h: clamp(240px, 25vw, 440px);
+  --tk-h: clamp(240px, calc(25 * var(--vw)), 440px);
   /* The footer below brings its own top space */
   padding-block: 0;
   overflow-x: clip;
@@ -1283,7 +1130,7 @@ a.wr__link:is(:hover, :focus-visible) .wr__img img {
   gap: calc(var(--gap) * 1.6);
   min-height: 72vh;
   min-height: 72svh;
-  padding: calc(var(--gutter) * 4.4) var(--gutter) calc(var(--gutter) * 2.4);
+  padding: calc(var(--edge-x) * 4.4) var(--gutter) calc(var(--edge-x) * 2.4);
 }
 .nf > .label {
   color: var(--mute);
@@ -1356,7 +1203,7 @@ a.wr__link:is(:hover, :focus-visible) .wr__img img {
 }
 .nf__fail {
   margin: auto;
-  padding: var(--gutter);
+  padding: var(--edge-x);
   font-family: var(--f-mono);
   font-size: var(--t-xs);
   letter-spacing: var(--track-label);
@@ -1374,7 +1221,7 @@ a.wr__link:is(:hover, :focus-visible) .wr__img img {
    */
   .nf__stage:has(.nd:not([data-view="wake"])) {
     aspect-ratio: auto;
-    height: min(calc(100svh - var(--gutter) * 4), calc((100vw - var(--gutter) * 2) * 1.45 + 6rem));
+    height: min(calc(100svh - var(--edge-x) * 4), calc((100vw - var(--gutter) * 2) * 1.45 + 6rem));
   }
 }
 

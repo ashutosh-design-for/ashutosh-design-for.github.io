@@ -282,30 +282,6 @@
   "w": 1440,
   "h": 10506
  },
- "distil/01": {
-  "w": 2000,
-  "h": 2500
- },
- "distil/02": {
-  "w": 2000,
-  "h": 2500
- },
- "distil/03": {
-  "w": 2000,
-  "h": 2500
- },
- "distil/04": {
-  "w": 2000,
-  "h": 2500
- },
- "distil/05": {
-  "w": 2000,
-  "h": 2500
- },
- "distil/cover": {
-  "w": 2000,
-  "h": 2500
- },
  "impressions-of-japan/01": {
   "w": 2000,
   "h": 1500
@@ -337,26 +313,6 @@
  "impressions-of-japan/cover": {
   "w": 2000,
   "h": 1500
- },
- "jobshapes/01": {
-  "w": 2000,
-  "h": 1497
- },
- "jobshapes/02": {
-  "w": 1440,
-  "h": 946
- },
- "jobshapes/03": {
-  "w": 1440,
-  "h": 3843
- },
- "jobshapes/04": {
-  "w": 1600,
-  "h": 4092
- },
- "jobshapes/cover": {
-  "w": 1728,
-  "h": 1185
  },
  "kuzara-green/01": {
   "w": 2000,
@@ -1017,14 +973,6 @@
   "w": 2000,
   "h": 1250
  },
- "sri-krishna-sagar/01": {
-  "w": 2000,
-  "h": 1333
- },
- "sri-krishna-sagar/cover": {
-  "w": 2000,
-  "h": 1333
- },
  "udte-bhawre/cover": {
   "w": 2000,
   "h": 1250,
@@ -1075,22 +1023,6 @@
   "w": 2000,
   "h": 1091
  },
- "writing/post-1": {
-  "w": 800,
-  "h": 549
- },
- "writing/post-2": {
-  "w": 800,
-  "h": 800
- },
- "writing/post-3": {
-  "w": 800,
-  "h": 760
- },
- "writing/post-4": {
-  "w": 390,
-  "h": 487
- },
  "voices/ankith": {
   "w": 320,
   "h": 320
@@ -1106,5 +1038,21 @@
  "voices/ujjwal": {
   "w": 320,
   "h": 320
+ },
+ "writing/post-1": {
+  "w": 800,
+  "h": 549
+ },
+ "writing/post-2": {
+  "w": 800,
+  "h": 800
+ },
+ "writing/post-3": {
+  "w": 800,
+  "h": 760
+ },
+ "writing/post-4": {
+  "w": 390,
+  "h": 487
  }
 }

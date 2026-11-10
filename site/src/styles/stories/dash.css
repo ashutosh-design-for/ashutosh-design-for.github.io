@@ -96,7 +96,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: max(30px, 2.6vw);
+  font-size: max(30px, calc(2.6 * var(--vw)));
   font-weight: 600;
   letter-spacing: -0.04em;
   opacity: 0.5;
@@ -114,7 +114,7 @@
 
 .ing__name {
   font-weight: 600;
-  font-size: max(14px, 1vw);
+  font-size: max(14px, calc(1 * var(--vw)));
 }
 
 .ing__dose {
@@ -125,7 +125,7 @@
   padding-top: 8px;
   border-top: 1px solid color-mix(in srgb, var(--dash-ink) 18%, transparent);
   font-weight: 600;
-  font-size: max(13px, 0.9vw);
+  font-size: max(13px, calc(0.9 * var(--vw)));
 }
 
 .ing__dose .label {
@@ -134,7 +134,7 @@
 }
 
 .crop--research {
-  height: clamp(200px, 17vw, 280px);
+  height: clamp(200px, calc(17 * var(--vw)), 280px);
   margin-bottom: calc(var(--fr-p) * -1);
 }
 
@@ -280,7 +280,7 @@
 
 .rto__plot {
   position: relative;
-  height: clamp(240px, 21vw, 330px);
+  height: clamp(240px, calc(21 * var(--vw)), 330px);
 }
 
 .rto__band {
@@ -298,7 +298,7 @@
 
 .rto__pct {
   font-family: var(--f-serif);
-  font-size: max(36px, 3.4vw);
+  font-size: max(36px, calc(3.4 * var(--vw)));
   line-height: 1;
 }
 
@@ -392,7 +392,7 @@
 }
 
 .trio__name {
-  font-size: max(26px, 2.2vw);
+  font-size: max(26px, calc(2.2 * var(--vw)));
   font-weight: 600;
   letter-spacing: -0.035em;
   line-height: 1;
@@ -412,7 +412,7 @@
 }
 
 .trio__price {
-  font-size: max(26px, 2.2vw);
+  font-size: max(26px, calc(2.2 * var(--vw)));
   font-weight: 600;
   letter-spacing: -0.04em;
 }
@@ -551,7 +551,7 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--gap-b);
-  margin-top: clamp(48px, 5vw, 80px);
+  margin-top: clamp(48px, calc(5 * var(--vw)), 80px);
   padding: var(--fr-p);
   border-radius: var(--fr-r);
   background: var(--dash-cream);

@@ -221,16 +221,17 @@
   --f-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
   --f-pixel: "Tiny5", var(--f-mono);
 
-  /* Fluid scale. xs is mono uppercase labels; xl and xxl are display. */
-  --t-xs: max(11px, 0.764vw);
-  --t-sm: max(14px, 1.042vw);
-  --t-md: max(18px, 1.597vw);
-  --t-lg: max(28px, 3.125vw);
-  --t-xl: max(52px, 8.333vw);
-  --t-xxl: max(64px, 15.278vw);
+  /* Fluid scale. xs is mono uppercase labels; xl and xxl are display. Every size scales with --vw, so it stops
+     growing at --max. */
+  --t-xs: max(11px, calc(0.764 * var(--vw)));
+  --t-sm: max(14px, calc(1.042 * var(--vw)));
+  --t-md: max(18px, calc(1.597 * var(--vw)));
+  --t-lg: max(28px, calc(3.125 * var(--vw)));
+  --t-xl: max(52px, calc(8.333 * var(--vw)));
+  --t-xxl: max(64px, calc(15.278 * var(--vw)));
   /* Section headings (70px at 1440) and their sub-headings (36px): calmer than display, so white space carries the page */
-  --t-h2: max(40px, 4.861vw);
-  --t-h3: max(26px, 2.5vw);
+  --t-h2: max(40px, calc(4.861 * var(--vw)));
+  --t-h3: max(26px, calc(2.5 * var(--vw)));
 
   --lh-tight: 0.86;
   --lh-display: 0.95;
@@ -238,14 +239,23 @@
   --track-display: -0.035em;
   --track-label: 0.06em;
 
+  /* Max width. The layout is drawn at 1440 and scales with the viewport up to --max, then holds: --vw is 1vw
+     capped at --max / 100, and past --max the gutter grows so content stays in a centred --max column while
+     section backgrounds still run edge to edge. */
+  --max: 1920px;
+  --vw: min(1vw, calc(var(--max) / 100));
+
   /* Grid: 12 columns, gutter is the page edge */
   --cols: 12;
-  --gutter: max(20px, 2.083vw);
-  --gap: max(12px, 1.042vw);
+  /* --edge-x is the margin inside the --max column; --gutter adds the centring past --max. Bleeds and vertical spacing use --edge-x so they
+     stop at the column's edge on wide screens. */
+  --edge-x: max(20px, calc(2.083 * var(--vw)));
+  --gutter: max(var(--edge-x), calc((100vw - var(--max)) / 2 + var(--edge-x)));
+  --gap: max(12px, calc(1.042 * var(--vw)));
   --col: calc((100vw - 2 * var(--gutter) - 11 * var(--gap)) / 12);
-  --section-y: clamp(96px, 11.111vw, 200px);
+  --section-y: clamp(96px, calc(11.111 * var(--vw)), 200px);
   /* Home rhythm: more air between sections than inner pages */
-  --section-y-lg: clamp(128px, 15.278vw, 280px);
+  --section-y-lg: clamp(128px, calc(15.278 * var(--vw)), 280px);
 
   /* Shape */
   --r-xs: 3px;

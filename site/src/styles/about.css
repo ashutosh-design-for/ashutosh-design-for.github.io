@@ -8,8 +8,8 @@
   grid-template-rows: auto 1fr auto;
   min-height: 100vh;
   min-height: 100svh;
-  padding-top: calc(var(--gutter) * 4.4);
-  padding-bottom: var(--gutter);
+  padding-top: calc(var(--edge-x) * 4.4);
+  padding-bottom: var(--edge-x);
 }
 .abt-hero__x {
   justify-self: end;
@@ -137,7 +137,7 @@
 }
 @media (max-width: 767px) {
   .abt-hero {
-    padding-top: calc(var(--gutter) * 6);
+    padding-top: calc(var(--edge-x) * 6);
   }
   .abt-how__col:first-child,
   .abt-how__col:last-child,
