@@ -1,18 +1,16 @@
-import { ScrollTrigger, gsap, reducedMotion } from "../core/motion";
+import { gsap, reducedMotion } from "../core/motion";
 
 /**
  * The middle of the home page, all scroll-linked:
  * - What I do: the statement's words fill from faint to full as it scrolls through the viewport.
  * - The stack (desktop): What I do and Credits are sticky (styles/home.css). The collage column rises over the
  *   statement first; once Credits reaches the top, the ink column rises into the empty half over one screen of
- *   scroll (the stack's gap), then The advantage slides over both.
- * - The advantage: each number counts up once, when its row enters.
+ *   scroll (the stack's gap).
  * Reduced motion and phones keep plain flow with everything at rest.
  */
 export function mountApproach(root: HTMLElement): () => void {
   if (reducedMotion()) return () => {};
   const tweens: gsap.core.Animation[] = [];
-  const triggers: ScrollTrigger[] = [];
 
   /* Sticky elements report where they are stuck, not where they sit, so every trigger is measured from the
      stack, which stays in flow, plus the heights of what comes before. */
@@ -57,26 +55,11 @@ export function mountApproach(root: HTMLElement): () => void {
     tweens.push(gsap.fromTo(tiles, { yPercent: (i: number) => 18 + (i % 3) * 10 }, { yPercent: (i: number) => -8 - (i % 3) * 6, ease: "none", scrollTrigger: st }));
   }
 
-  root.querySelectorAll<HTMLElement>("[data-count]").forEach((el) => {
-    const to = Number(el.dataset.count);
-    const n = { v: 0 };
-    el.textContent = "0";
-    triggers.push(
-      ScrollTrigger.create({
-        trigger: el,
-        start: "top 88%",
-        once: true,
-        onEnter: () => tweens.push(gsap.to(n, { v: to, duration: 1.2, ease: "expo.out", onUpdate: () => (el.textContent = String(Math.round(n.v))) })),
-      }),
-    );
-  });
-
   return () => {
     tweens.forEach((t) => {
       t.scrollTrigger?.kill();
       t.kill();
     });
-    triggers.forEach((t) => t.kill());
     words.forEach((w) => gsap.set(w, { clearProps: "opacity" }));
     if (cr) gsap.set(Array.from(cr.children), { clearProps: "transform" });
   };

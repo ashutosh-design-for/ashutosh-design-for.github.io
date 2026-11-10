@@ -136,7 +136,7 @@
 }
 .sx__title {
   margin-top: 6px;
-  font-size: clamp(18px, 1.6vw, 24px);
+  font-size: clamp(18px, calc(1.6 * var(--vw)), 24px);
   font-weight: 600;
 }
 .sx__sum {
@@ -466,7 +466,7 @@
   border-color: var(--at-danger);
 }
 .at-roles b {
-  font-size: clamp(18px, 1.6vw, 24px);
+  font-size: clamp(18px, calc(1.6 * var(--vw)), 24px);
   font-weight: 600;
 }
 .at-roles span {

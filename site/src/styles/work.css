@@ -7,8 +7,8 @@
   --wk-name: calc(var(--t-lg) * 0.9);
   --wk-lane: calc(4 * var(--col) + 3 * var(--gap));
   --wk-lane-x: calc(6 * (var(--col) + var(--gap)));
-  padding-top: calc(var(--gutter) * 3.4);
-  padding-bottom: calc(var(--gutter) * 3);
+  padding-top: calc(var(--edge-x) * 3.4);
+  padding-bottom: calc(var(--edge-x) * 3);
 }
 
 /* Head */

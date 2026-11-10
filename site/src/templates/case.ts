@@ -15,7 +15,7 @@ const STORIES = Object.fromEntries(
  * Gallery shots that repeat the cover at nearly the same framing. Measured once with a 16px luminance
  * hash against the cover (mean difference under 10 of 255); captioned videos are kept.
  */
-const SAME_AS_COVER = new Set(["sri-krishna-sagar/01"]);
+const SAME_AS_COVER = new Set<string>([]);
 
 /**
  * Cover framing. UI captures are shown whole on the ink stage, between the header zone and the title zone,
@@ -27,9 +27,7 @@ const FRAMED_COVERS = new Set([
   "armoriq-design-system",
   "social-content-tool",
   "armortools",
-  "jobshapes",
   "kuzara-green",
-  "distil",
   "dash",
   "papersseum",
   "navu-kavacha",

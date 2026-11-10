@@ -1,7 +1,7 @@
 /* Case page. The auge details structure, condensed: sticky hero, paper sheet, sticky blend title. */
 
 .case {
-  --case-bar-y: calc(var(--gutter) * 0.9);
+  --case-bar-y: calc(var(--edge-x) * 0.9);
   --case-step: calc(var(--section-y) * 0.5);
   position: relative;
 }
@@ -43,7 +43,7 @@
   top: 0;
   left: var(--gutter);
   right: var(--gutter);
-  font-size: clamp(64px, 10vw, 180px);
+  font-size: clamp(64px, calc(10 * var(--vw)), 180px);
   font-weight: 600;
   line-height: 0.85;
   letter-spacing: var(--track-display);
@@ -112,13 +112,13 @@
 }
 /* Photos with UI at the top start below the header zone, so their own top bar never sits under the site nav */
 .case__hero--inset .case__hero-media {
-  top: calc(var(--gutter) + 58px);
+  top: calc(var(--edge-x) + 58px);
   bottom: -20%;
   transform-origin: 50% 0;
 }
 /* UI captures are framed whole on the ink stage, between the header zone and the title zone */
 .case__hero--framed .case__hero-media {
-  inset: calc(var(--gutter) + 58px) var(--gutter) calc(100dvh - var(--case-title-top, 70dvh) + var(--gap));
+  inset: calc(var(--edge-x) + 58px) var(--gutter) calc(100dvh - var(--case-title-top, 70dvh) + var(--gap));
   transform-origin: 50% 0;
 }
 .case__hero--framed .case__hero-media > img,
@@ -139,7 +139,7 @@
   right: 0;
   top: 100dvh;
   transform: translateY(-100%);
-  padding-bottom: var(--gutter);
+  padding-bottom: var(--edge-x);
   color: var(--paper);
   align-items: end;
   z-index: 1;
@@ -559,7 +559,7 @@
 /* Phone: 4 columns */
 @media (max-width: 767px) {
   .case__title {
-    font-size: clamp(40px, 11.5vw, 64px);
+    font-size: clamp(40px, calc(11.5 * var(--vw)), 64px);
   }
   .case__headline {
     grid-column: 1 / span 3;

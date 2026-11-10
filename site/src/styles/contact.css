@@ -1,13 +1,13 @@
 /* Contact page (Agent B): exactly one viewport, no footer */
 .ct {
-  --morph: clamp(150px, 17vw, 260px);
+  --morph: clamp(150px, calc(17 * var(--vw)), 260px);
   display: flex;
   flex-direction: column;
   height: 100vh;
   height: 100svh;
   min-height: 560px;
-  padding-top: calc(var(--gutter) * 4.4);
-  padding-bottom: var(--gutter);
+  padding-top: calc(var(--edge-x) * 4.4);
+  padding-bottom: var(--edge-x);
 }
 .ct__top,
 .ct__bottom {
@@ -72,7 +72,7 @@
 .ct__email {
   display: block;
   /* --ct-fs is set by JS so the address spans the content box */
-  font-size: var(--ct-fs, 7.2vw);
+  font-size: var(--ct-fs, calc(7.2 * var(--vw)));
   line-height: 0.92;
   letter-spacing: var(--track-display);
   white-space: nowrap;
@@ -240,7 +240,7 @@
 @media (max-width: 767px) {
   .ct {
     --morph: 128px;
-    padding-top: calc(var(--gutter) * 5);
+    padding-top: calc(var(--edge-x) * 5);
   }
   .ct__eyebrow {
     grid-column: 1 / 3;

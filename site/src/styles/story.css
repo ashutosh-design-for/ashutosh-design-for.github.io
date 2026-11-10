@@ -6,12 +6,13 @@
  * This file is the shared kit (templates/stories/kit.ts). A project's own component ports live in styles/stories/<slug>.css.
  */
 .story {
-  --story-x: 15vw;
-  --story-y: clamp(120px, 12vw, 200px);
-  --gap-b: max(12px, 1.11vw);
-  --fr-p: clamp(20px, 2.6vw, 44px);
+  /* Past --max the margin grows by the overflow, so the story stays in a centred column */
+  --story-x: max(calc(15 * var(--vw)), calc((100vw - var(--max)) / 2 + 15 * var(--vw)));
+  --story-y: clamp(120px, calc(12 * var(--vw)), 200px);
+  --gap-b: max(12px, calc(1.11 * var(--vw)));
+  --fr-p: clamp(20px, calc(2.6 * var(--vw)), 44px);
   --fr-r: 20px;
-  --prose: max(16px, 1.18vw);
+  --prose: max(16px, calc(1.18 * var(--vw)));
   position: relative;
 }
 
@@ -51,7 +52,7 @@
   column-gap: var(--gap-b);
   row-gap: 28px;
   align-items: end;
-  margin-bottom: clamp(48px, 5vw, 88px);
+  margin-bottom: clamp(48px, calc(5 * var(--vw)), 88px);
 }
 
 .sh__main {
@@ -78,7 +79,7 @@
 .sh__title {
   font-family: var(--f-serif);
   font-weight: 400;
-  font-size: max(36px, 4.3vw);
+  font-size: max(36px, calc(4.3 * var(--vw)));
   line-height: 1.02;
   letter-spacing: -0.012em;
   text-wrap: balance;
@@ -178,7 +179,7 @@
 .fr__cap {
   position: relative;
   z-index: 2;
-  font-size: max(13px, 0.9vw);
+  font-size: max(13px, calc(0.9 * var(--vw)));
   line-height: 1.4;
   max-width: 34ch;
   color: color-mix(in srgb, currentColor 78%, transparent);
@@ -216,12 +217,12 @@
 
 .fr__q {
   font-family: var(--f-serif);
-  font-size: max(24px, 2.1vw);
+  font-size: max(24px, calc(2.1 * var(--vw)));
   line-height: 1.05;
 }
 
 .fr__a {
-  font-size: max(13px, 0.9vw);
+  font-size: max(13px, calc(0.9 * var(--vw)));
   line-height: 1.45;
   color: color-mix(in srgb, currentColor 72%, transparent);
 }
@@ -405,7 +406,7 @@
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: var(--gap-b);
-  margin-bottom: clamp(48px, 5vw, 88px);
+  margin-bottom: clamp(48px, calc(5 * var(--vw)), 88px);
 }
 
 .stats__item {
@@ -415,14 +416,14 @@
 
 .stats__item dt {
   font-family: var(--f-serif);
-  font-size: max(36px, 3.6vw);
+  font-size: max(36px, calc(3.6 * var(--vw)));
   line-height: 1;
   font-variant-numeric: tabular-nums;
 }
 
 .stats__item dd {
   margin-top: 12px;
-  font-size: max(13px, 0.9vw);
+  font-size: max(13px, calc(0.9 * var(--vw)));
   line-height: 1.45;
   color: var(--ink-2);
   max-width: 24ch;
@@ -469,7 +470,7 @@
 
 .spec__title {
   font-family: var(--f-serif);
-  font-size: max(30px, 2.8vw);
+  font-size: max(30px, calc(2.8 * var(--vw)));
   line-height: 1.02;
 }
 
@@ -479,7 +480,7 @@
 
 .spec__vs {
   display: flex;
-  gap: clamp(20px, 3vw, 48px);
+  gap: clamp(20px, calc(3 * var(--vw)), 48px);
 }
 
 .spec__vs p {
@@ -490,7 +491,7 @@
 .spec__vs b {
   font-family: var(--f-serif);
   font-weight: 400;
-  font-size: max(44px, 4.6vw);
+  font-size: max(44px, calc(4.6 * var(--vw)));
   line-height: 0.9;
 }
 
@@ -516,7 +517,7 @@
 }
 
 .spec dd {
-  font-size: max(14px, 1vw);
+  font-size: max(14px, calc(1 * var(--vw)));
   line-height: 1.5;
   color: var(--ink-2);
 }
@@ -571,7 +572,7 @@
 }
 
 .ia__q {
-  font-size: max(15px, 1.1vw);
+  font-size: max(15px, calc(1.1 * var(--vw)));
   line-height: 1.2;
 }
 
@@ -617,7 +618,7 @@
 .bento--mobile .m-a {
   grid-column: span 6;
   grid-row: span 2;
-  min-height: clamp(560px, 52vw, 820px);
+  min-height: clamp(560px, calc(52 * var(--vw)), 820px);
 }
 
 .bento--mobile .m-b,
@@ -676,7 +677,7 @@
   grid-template-columns: repeat(12, minmax(0, 1fr));
   column-gap: var(--gap-b);
   align-items: center;
-  padding-block: clamp(36px, 4vw, 64px);
+  padding-block: clamp(36px, calc(4 * var(--vw)), 64px);
   border-bottom: 1px solid var(--line);
 }
 
@@ -686,7 +687,7 @@
 
 .res__n {
   font-family: var(--f-serif);
-  font-size: max(64px, 7vw);
+  font-size: max(64px, calc(7 * var(--vw)));
   line-height: 0.9;
   color: var(--cobalt);
 }
@@ -695,7 +696,7 @@
   margin-top: 14px;
   padding-bottom: 14px;
   border-bottom: 1px solid var(--line);
-  font-size: max(20px, 1.6vw);
+  font-size: max(20px, calc(1.6 * var(--vw)));
   font-weight: 500;
   letter-spacing: -0.015em;
 }
@@ -773,7 +774,7 @@
 /* Tablet */
 @media (max-width: 1023px) {
   .story {
-    --story-x: 8vw;
+    --story-x: calc(8 * var(--vw));
   }
   .sh__main,
   .sh__side {

@@ -78,7 +78,7 @@
   width: 100%;
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
-  gap: clamp(6px, 1vw, 16px);
+  gap: clamp(6px, calc(1 * var(--vw)), 16px);
 }
 .stk {
   aspect-ratio: 1;
@@ -292,7 +292,7 @@
 }
 .px__sats b {
   font-family: var(--f-mono);
-  font-size: clamp(44px, 4.4vw, 68px);
+  font-size: clamp(44px, calc(4.4 * var(--vw)), 68px);
   font-weight: 500;
   line-height: 1;
   font-variant-numeric: tabular-nums;
@@ -487,14 +487,14 @@
   width: 100%;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(10px, 1.2vw, 18px);
+  gap: clamp(10px, calc(1.2 * var(--vw)), 18px);
 }
 .fx__lane {
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 14px;
-  padding: clamp(20px, 2.4vw, 36px);
+  padding: clamp(20px, calc(2.4 * var(--vw)), 36px);
   border-radius: 22px;
 }
 .fx__lane--go {
@@ -505,13 +505,13 @@
 }
 .fx__stk {
   position: absolute;
-  top: clamp(16px, 2vw, 28px);
-  right: clamp(16px, 2vw, 28px);
-  width: clamp(44px, 5vw, 72px);
+  top: clamp(16px, calc(2 * var(--vw)), 28px);
+  right: clamp(16px, calc(2 * var(--vw)), 28px);
+  width: clamp(44px, calc(5 * var(--vw)), 72px);
   height: auto;
 }
 .fx__words {
-  font-size: clamp(30px, 3.4vw, 54px);
+  font-size: clamp(30px, calc(3.4 * var(--vw)), 54px);
   font-weight: 700;
   line-height: 0.98;
   letter-spacing: -0.02em;
@@ -816,7 +816,7 @@
 .st5__view--populated {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(10px, 1.2vw, 18px);
+  gap: clamp(10px, calc(1.2 * var(--vw)), 18px);
   align-items: start;
 }
 .pc {

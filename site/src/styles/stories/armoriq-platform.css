@@ -139,14 +139,14 @@
   width: 100%;
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  gap: clamp(16px, 2vw, 32px);
+  gap: clamp(16px, calc(2 * var(--vw)), 32px);
   font-family: var(--aq-sans);
 }
 .doors__col {
   display: flex;
   flex-direction: column;
   gap: 14px;
-  padding: clamp(18px, 2vw, 28px);
+  padding: clamp(18px, calc(2 * var(--vw)), 28px);
   border: 1px solid var(--aq-border);
   border-radius: 14px;
   background: var(--aq-surface);
@@ -289,7 +289,7 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 12px;
-  padding: 14px clamp(14px, 1.6vw, 22px);
+  padding: 14px clamp(14px, calc(1.6 * var(--vw)), 22px);
 }
 .lens__bar {
   justify-content: space-between;
@@ -308,7 +308,7 @@
 }
 .lens__view {
   grid-area: 1 / 1;
-  padding: clamp(16px, 1.8vw, 24px);
+  padding: clamp(16px, calc(1.8 * var(--vw)), 24px);
   visibility: hidden;
   opacity: 0;
   transition:
@@ -549,8 +549,8 @@
 .plens__main {
   display: flex;
   flex-direction: column;
-  gap: clamp(18px, 2.2vw, 30px);
-  padding: clamp(18px, 2.4vw, 36px);
+  gap: clamp(18px, calc(2.2 * var(--vw)), 30px);
+  padding: clamp(18px, calc(2.4 * var(--vw)), 36px);
 }
 .plens__chips {
   display: flex;
@@ -581,7 +581,7 @@
 .plens__q {
   max-width: 22ch;
   min-height: 2.3em;
-  font-size: clamp(26px, 2.6vw, 40px);
+  font-size: clamp(26px, calc(2.6 * var(--vw)), 40px);
   font-weight: 500;
   line-height: 1.12;
   letter-spacing: -0.02em;
@@ -616,7 +616,7 @@
 /* 05 Kill switch: the agent header on the ink band, with the popover and the held commit */
 .fr--kill .fr__stage {
   justify-content: center;
-  padding-block: clamp(20px, 4vw, 64px);
+  padding-block: clamp(20px, calc(4 * var(--vw)), 64px);
 }
 .ks {
   width: 100%;
@@ -626,7 +626,7 @@
 }
 .ks__card {
   position: relative;
-  padding: clamp(16px, 2vw, 24px);
+  padding: clamp(16px, calc(2 * var(--vw)), 24px);
   border-radius: 16px;
   background: var(--aq-surface);
 }
@@ -659,7 +659,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: clamp(17px, 1.6vw, 22px);
+  font-size: clamp(17px, calc(1.6 * var(--vw)), 22px);
   font-weight: 600;
 }
 .ks__sub {
@@ -803,7 +803,7 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   align-content: center;
-  gap: clamp(16px, 2vw, 28px);
+  gap: clamp(16px, calc(2 * var(--vw)), 28px);
   font-family: var(--aq-sans);
 }
 .cut--stack {
@@ -817,7 +817,7 @@
   border-left: 2px solid var(--aq-accent);
 }
 .cut b {
-  font-size: clamp(18px, 1.6vw, 24px);
+  font-size: clamp(18px, calc(1.6 * var(--vw)), 24px);
   font-weight: 600;
   color: var(--aq-ink);
 }

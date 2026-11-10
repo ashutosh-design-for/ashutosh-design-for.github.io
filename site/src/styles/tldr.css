@@ -65,8 +65,8 @@ html[data-tldr="on"] [data-skim="keep"] {
 .tldr--float {
   position: fixed;
   z-index: var(--z-chrome);
-  right: max(20px, 2.4vw);
-  bottom: max(20px, 2.4vw);
+  right: max(20px, calc(2.4 * var(--vw)));
+  bottom: max(20px, calc(2.4 * var(--vw)));
   border-color: var(--line);
   box-shadow: 0 6px 24px color-mix(in srgb, var(--ink) 16%, transparent);
   opacity: 0;

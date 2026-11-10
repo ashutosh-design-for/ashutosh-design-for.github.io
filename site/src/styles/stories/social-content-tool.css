@@ -57,7 +57,7 @@
   width: 100%;
   display: grid;
   grid-template-columns: minmax(0, 560px) minmax(0, 1fr);
-  gap: clamp(16px, 2.4vw, 36px);
+  gap: clamp(16px, calc(2.4 * var(--vw)), 36px);
   align-items: start;
 }
 .duo__canvas {
@@ -130,7 +130,7 @@
   width: 100%;
   display: grid;
   grid-template-columns: minmax(0, 540px) minmax(0, 1fr);
-  gap: clamp(16px, 2.4vw, 36px);
+  gap: clamp(16px, calc(2.4 * var(--vw)), 36px);
   align-items: start;
 }
 .leg__board {
@@ -209,7 +209,7 @@
 }
 .leg__ratio {
   font-family: var(--aq-mono);
-  font-size: clamp(32px, 3.2vw, 48px);
+  font-size: clamp(32px, calc(3.2 * var(--vw)), 48px);
   font-variant-numeric: tabular-nums;
   color: var(--sct-ok);
 }
@@ -261,7 +261,7 @@
   width: 100%;
   display: grid;
   grid-template-columns: minmax(170px, 0.4fr) minmax(0, 1fr);
-  gap: clamp(14px, 2vw, 28px);
+  gap: clamp(14px, calc(2 * var(--vw)), 28px);
   font-family: var(--aq-sans);
 }
 .fmt__list {
@@ -326,7 +326,7 @@
   top: 50%;
   transform: translateY(-50%);
   font-family: var(--aq-sans);
-  font-size: clamp(14px, 3.2vw, 34px);
+  font-size: clamp(14px, calc(3.2 * var(--vw)), 34px);
   font-weight: 700;
   line-height: 1.02;
   color: #fff;

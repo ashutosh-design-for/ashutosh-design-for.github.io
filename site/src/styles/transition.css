@@ -6,7 +6,7 @@
 .ts {
   font-family: var(--f-sans);
   font-weight: 600;
-  font-size: max(36px, 5.7vw);
+  font-size: max(36px, calc(5.7 * var(--vw)));
   line-height: var(--lh-tight);
   letter-spacing: var(--track-display);
   text-transform: uppercase;
@@ -76,7 +76,7 @@ html[data-mode="os"] .curtain {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-inline: 5vw;
+  padding-inline: calc(5 * var(--vw));
 }
 .curtain__title {
   width: 100%;
@@ -91,7 +91,7 @@ html[data-mode="os"] .curtain {
   display: block;
 }
 .curtain__slot {
-  width: max(120px, 16.667vw);
+  width: max(120px, calc(16.667 * var(--vw)));
   aspect-ratio: 16 / 10;
   overflow: hidden;
 }
@@ -104,7 +104,7 @@ html[data-mode="os"] .curtain {
 .curtain__count {
   position: absolute;
   left: 50%;
-  bottom: var(--gutter);
+  bottom: var(--edge-x);
   transform: translateX(-50%);
   font-variant-numeric: tabular-nums;
 }
