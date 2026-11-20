@@ -1,0 +1,115 @@
+/*
+ * Platform design system: an image-led page. Boards wipe open (data-reveal="media") and carry the story;
+ * widths do the pacing. bleed = edge to edge, wide = page gutter, inset = story column, left and right = an
+ * offset pair inside the gutter. Phones collapse everything but bleed to the gutter.
+ */
+.story--platform-design-system {
+  --pds-gap: clamp(20px, calc(3 * var(--vw)), 56px);
+  --pds-r: clamp(8px, calc(0.9 * var(--vw)), 14px);
+  padding-bottom: 0;
+}
+
+.pds__intro {
+  padding-bottom: clamp(40px, calc(5 * var(--vw)), 88px);
+}
+
+.pds__label {
+  color: var(--mute);
+  margin-bottom: 22px;
+}
+
+.pds__lede {
+  font-family: var(--f-serif);
+  font-weight: 400;
+  font-size: max(30px, calc(3.4 * var(--vw)));
+  line-height: 1.08;
+  letter-spacing: -0.012em;
+  max-width: 18em;
+  text-wrap: balance;
+  margin-bottom: clamp(48px, calc(5 * var(--vw)), 88px);
+}
+
+.pds__intro .stats {
+  margin-bottom: 0;
+}
+
+.pds__boards,
+.pds__all {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pds-gap);
+}
+
+.pds__all {
+  padding-top: calc(var(--pds-gap) * 2);
+}
+
+.pds__all .pds__label {
+  margin-bottom: 0;
+}
+
+.pds__b {
+  margin: 0;
+}
+
+.pds__m {
+  overflow: hidden;
+  border-radius: var(--pds-r);
+  background: #f2f2f3;
+}
+
+.pds__m > img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.pds__b--wide {
+  padding-inline: var(--gutter);
+}
+
+.pds__b--inset {
+  padding-inline: var(--story-x);
+}
+
+/* The offset pair: each board takes three quarters of the gutter width, one hugging each side */
+.pds__b--left,
+.pds__b--right {
+  padding-inline: var(--gutter);
+}
+
+.pds__b--left .pds__m,
+.pds__b--right .pds__m {
+  width: 76%;
+}
+
+.pds__b--right .pds__m {
+  margin-left: auto;
+}
+
+/* Chapter boards: full bleed, square edges, and a wider breath around them */
+.pds__b--bleed {
+  margin-block: var(--pds-gap);
+}
+
+.pds__b--bleed .pds__m {
+  border-radius: 0;
+}
+
+.pds__all .pds__b--bleed {
+  margin-bottom: 0;
+  margin-top: calc(var(--pds-gap) * 2);
+}
+
+@media (max-width: 767px) {
+  .pds__b--inset {
+    padding-inline: var(--gutter);
+  }
+  .pds__b--left .pds__m,
+  .pds__b--right .pds__m {
+    width: 100%;
+  }
+  .pds__b--bleed {
+    margin-block: 0;
+  }
+}

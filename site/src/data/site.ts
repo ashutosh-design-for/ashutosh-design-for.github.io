@@ -49,7 +49,7 @@ export const EXPERIENCE: Role[] = [
     when: "Now",
     note: "Security for AI agents. The platform, its design system and the internal tools.",
     current: true,
-    projects: ["armoriq-platform", "armoriq-design-system", "social-content-tool", "armortools"],
+    projects: ["armoriq-platform", "platform-design-system", "social-content-tool", "armortools"],
   },
   {
     org: "Ivish AI",
@@ -168,7 +168,7 @@ export const SKILLS: Skill[] = [
     name: "Design systems",
     sub: "Tokens, components, rules",
     body: "Tokens and primitives that work in Figma and in code, so the tenth page stays as consistent as the first.",
-    projects: ["armoriq-design-system:0", "social-content-tool:1", "verbx:3", "shopstr:2"],
+    projects: ["platform-design-system:0", "social-content-tool:1", "verbx:3", "shopstr:2"],
   },
   {
     name: "Frontend build",

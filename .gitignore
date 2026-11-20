@@ -24,3 +24,16 @@ IMAGE-SIZES.md
 
 # Case-study captures and capture tools stay local
 .shots/
+
+# Resume drafts carry placeholder numbers and job-search notes: local only. The site loads the page by glob, so it
+# builds without these files
+/resume/
+site/src/assets/fonts/resume/
+site/src/data/resume.ts
+site/src/data/resume-parse.json
+site/src/templates/resume.ts
+site/src/views/resume.ts
+site/src/styles/resume.css
+
+# Behance decks are local working files (stock licences unchecked); vite builds them only where they exist
+site/behance/

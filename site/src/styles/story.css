@@ -834,3 +834,216 @@
     width: 54%;
   }
 }
+
+/* ---------------------------------------------------------------- bento grid (kit.ts bento) */
+/*
+ * Rows of tiles at one shared height: each row has an aspect ratio (--rar) and its columns are weighted by their
+ * media's ratios, so tiles meet edge to edge without cropping. Tiles lift and fade in on entry (data-reveal="tile").
+ * Phones stack every tile at its media's own ratio (--tar).
+ */
+.bx {
+  --bx-gap: max(10px, calc(0.9 * var(--vw)));
+  --bx-r: 0px;
+  --bx-p: clamp(14px, calc(2.4 * var(--vw)), 44px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--bx-gap);
+  /* The same side margins as the story column on the other case pages */
+  padding-inline: var(--story-x);
+}
+
+.bx-sec + .bx,
+.bx + .bx-sec {
+  margin-top: 0;
+}
+
+.bx-sec .sh {
+  margin-bottom: clamp(40px, calc(4 * var(--vw)), 72px);
+}
+
+.bx__row {
+  display: grid;
+  gap: var(--bx-gap);
+  aspect-ratio: var(--rar);
+}
+
+.bx__row--free {
+  aspect-ratio: auto;
+}
+
+.bx__col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bx-gap);
+  min-height: 0;
+}
+
+.bx__col > .bx__t {
+  flex: calc(1 / var(--tar)) 1 0;
+  min-height: 0;
+}
+
+.bx__t {
+  position: relative;
+  margin: 0;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+}
+
+.bx__row--free .bx__t {
+  aspect-ratio: var(--tar);
+  height: auto;
+}
+
+.bx__m {
+  height: 100%;
+  overflow: hidden;
+  border-radius: var(--bx-r);
+  background: var(--bg, #ececea);
+}
+
+.bx__in {
+  height: 100%;
+}
+
+.bx__in > img,
+.bx__in > video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: var(--pos, 50% 50%);
+}
+
+.bx__t--cover .bx__in > img,
+.bx__t--cover .bx__in > video {
+  object-fit: cover;
+}
+
+.bx__t--pad .bx__in {
+  padding: var(--bx-p);
+}
+
+/* A floating screen gets its own corner and a hairline so it reads as a window on the ground */
+.bx__t--pad .bx__in > img,
+.bx__t--pad .bx__in > video {
+  border-radius: calc(var(--bx-r) * 0.6);
+}
+
+.bx__label {
+  position: absolute;
+  left: calc(var(--bx-p) * 0.6);
+  bottom: calc(var(--bx-p) * 0.5);
+  color: var(--ink-2);
+  pointer-events: none;
+}
+
+.bx__t--dark .bx__label {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Text cards: the bento's words, set on a tile ground */
+.bx__t--text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  padding: var(--bx-p);
+  border-radius: var(--bx-r);
+  background: var(--bg, #f4f3f0);
+  color: var(--ink);
+}
+
+.bx__t--text.bx__t--dark {
+  color: #f4f3f0;
+}
+
+.bx__t--text .label {
+  color: inherit;
+  opacity: 0.6;
+}
+
+.bx__t--text p {
+  margin: 0;
+}
+
+.bx__big {
+  font-family: var(--f-serif);
+  font-size: max(22px, calc(1.9 * var(--vw)));
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.bx__small {
+  font-size: max(14px, calc(1.02 * var(--vw)));
+  line-height: 1.5;
+  max-width: 26em;
+}
+
+@media (max-width: 767px) {
+  .bx__row {
+    grid-template-columns: minmax(0, 1fr) !important;
+    aspect-ratio: auto;
+  }
+  .bx__col {
+    display: contents;
+  }
+  .bx__t {
+    aspect-ratio: var(--tar);
+    height: auto;
+  }
+  .bx__t--text {
+    aspect-ratio: auto;
+  }
+}
+
+.bx--last {
+  padding-bottom: var(--story-y);
+}
+
+.bx__row--cap {
+  max-height: 86svh;
+}
+
+@media (max-width: 767px) {
+  .bx__row--cap {
+    max-height: none;
+  }
+}
+
+/* Presentation pages: no prose, so the deck starts right under the case header */
+.story--deck {
+  padding-top: clamp(40px, calc(5 * var(--vw)), 96px);
+}
+
+/* A Figma board shown as one object: its rows sit on the board's own seam colour, with seams as wide as the board's */
+.bx--board {
+  --seam: 1.416cqw;
+  container-type: inline-size;
+}
+
+.bx--board,
+.bx--board .bx__row {
+  gap: 0;
+}
+
+.bx--board .bx__row + .bx__row {
+  margin-top: 0;
+}
+
+.bx--board > .bx__row {
+  border-top: var(--seam) solid #3f3f3f;
+}
+
+.bx--board > .bx__row:first-child {
+  border-top: 0;
+}
+
+/* Boards stacked edge to edge, exactly as on the Figma board */
+.bx--seamless,
+.bx--seamless .bx__row {
+  gap: 0;
+}
+

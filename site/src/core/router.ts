@@ -21,6 +21,9 @@ export type Transition = {
 
 const BASE = import.meta.env.BASE_URL;
 
+/* The resume view is local only (gitignored); a clean checkout has no file, so the route loads not found */
+const resumeView = import.meta.env.DEV ? import.meta.glob<View>("../views/resume.ts")["../views/resume.ts"] : undefined;
+
 const views: Record<Route["kind"], () => Promise<View>> = {
   home: () => import("../views/home"),
   case: () => import("../views/case"),
@@ -28,6 +31,8 @@ const views: Record<Route["kind"], () => Promise<View>> = {
   about: () => import("../views/about"),
   playground: () => import("../views/playground"),
   contact: () => import("../views/contact"),
+  /* Dev only: production never matches a resume route, and this keeps its chunk out of the build */
+  resume: resumeView ?? (() => import("../views/notfound")),
   notfound: () => import("../views/notfound"),
 };
 
@@ -38,7 +43,7 @@ let pendingPop: URL | null = null;
 const hooks: ((route: Route) => void)[] = [];
 
 const main = () => document.getElementById("main")!;
-const key = (r: Route) => (r.kind === "case" ? `case:${r.slug}` : r.kind);
+const key = (r: Route) => (r.kind === "case" ? `case:${r.slug}` : r.kind === "resume" ? `resume:${r.variant}` : r.kind);
 
 /** The transition layer registers itself here. Until then navigation is a hard cut. */
 export const setTransition = (t: Transition) => void (transition = t);
