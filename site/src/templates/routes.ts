@@ -8,6 +8,13 @@ import { home } from "./home";
 import { playground } from "./playground";
 import { workIndex } from "./work";
 
+/* Resume drafts are local only (gitignored, placeholder numbers). The glob is empty in a clean checkout, so the
+   route falls through to not found there, and production never matches it either way. */
+type ResumeModule = { isResume(id: string): boolean; resumePage(base: string, variant: string | null): string };
+const resume = import.meta.env.DEV
+  ? import.meta.glob<ResumeModule>("./resume.ts", { eager: true })["./resume.ts"]
+  : undefined;
+
 export type Route =
   | { kind: "home" }
   | { kind: "work" }
@@ -15,6 +22,7 @@ export type Route =
   | { kind: "about" }
   | { kind: "playground" }
   | { kind: "contact" }
+  | { kind: "resume"; variant: string | null }
   | { kind: "notfound" };
 export type RouteKind = Route["kind"];
 export type Rendered = { title: string; description: string; html: string };
@@ -27,6 +35,11 @@ export function match(pathname: string, base: string): Route {
   if (clean === "about") return { kind: "about" };
   if (clean === "playground") return { kind: "playground" };
   if (clean === "contact") return { kind: "contact" };
+  /* Resume drafts carry placeholder numbers, so they exist on the dev server only and are never prerendered */
+  if (import.meta.env.DEV && resume) {
+    const r = clean.match(/^resume(?:\/([a-z0-9-]+))?$/);
+    if (r && (!r[1] || resume.isResume(r[1]))) return { kind: "resume", variant: r[1] ?? null };
+  }
   const m = clean.match(/^work\/([a-z0-9-]+)$/);
   if (m && PROJECTS.some((p) => p.slug === m[1])) return { kind: "case", slug: m[1] };
   return { kind: "notfound" };
@@ -39,6 +52,7 @@ export function label(route: Route): string {
   if (route.kind === "about") return "About";
   if (route.kind === "playground") return "Playground";
   if (route.kind === "contact") return "Contact";
+  if (route.kind === "resume") return "Resume";
   if (route.kind === "notfound") return "Lost";
   return "Index";
 }
@@ -75,6 +89,9 @@ export function render(route: Route, base: string): Rendered {
   }
   if (route.kind === "contact") {
     return { title: `Contact, ${SITE.name}`, description: SITE.description, html: contact(base) };
+  }
+  if (import.meta.env.DEV && resume && route.kind === "resume") {
+    return { title: `Resume, ${SITE.name}`, description: SITE.description, html: resume.resumePage(base, route.variant) };
   }
   if (route.kind === "notfound") {
     return { title: `Not found, ${SITE.name}`, description: SITE.description, html: notFound(base) + footer(base) };

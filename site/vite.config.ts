@@ -1,5 +1,5 @@
 import { defineConfig, createServer, type Plugin, type ResolvedConfig } from "vite";
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -67,5 +67,20 @@ export default defineConfig({
   plugins: [prerenderPlugin()],
   server: { port: 5176 },
   preview: { port: 4176 },
-  build: { target: "es2022", assetsInlineLimit: 0 },
+  build: {
+    target: "es2022",
+    assetsInlineLimit: 0,
+    /* The Behance decks are local working files (gitignored): build each one only where it exists */
+    rollupOptions: {
+      input: Object.fromEntries(
+        Object.entries({
+          main: "index.html",
+          press: "behance/social-content-tool/index.html",
+          armoriq: "behance/armoriq-platform/index.html",
+        })
+          .map(([k, f]) => [k, resolve(root, f)])
+          .filter(([, f]) => existsSync(f)),
+      ),
+    },
+  },
 });
