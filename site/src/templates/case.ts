@@ -24,13 +24,14 @@ const SAME_AS_COVER = new Set<string>([]);
  */
 const FRAMED_COVERS = new Set([
   "armoriq-platform",
-  "armoriq-design-system",
+  "platform-design-system",
   "social-content-tool",
   "armortools",
   "kuzara-green",
   "dash",
   "papersseum",
-  "navu-kavacha",
+  "smile-share",
+  "udte-bhawre",
 ]);
 const INSET_COVERS = new Set(["shopstr"]);
 const heroClass = (slug: string) =>

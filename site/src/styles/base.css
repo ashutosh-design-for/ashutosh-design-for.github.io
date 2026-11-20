@@ -162,6 +162,9 @@ em {
   .js [data-reveal="up"] {
     visibility: hidden;
   }
+  .js [data-reveal="tile"]:not([data-revealed]) {
+    opacity: 0;
+  }
   .js [data-reveal="media"]:not([data-revealed]) {
     clip-path: inset(0 0 0 100%);
   }

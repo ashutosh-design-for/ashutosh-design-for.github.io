@@ -1,0 +1,21 @@
+/*
+ * Udte Bhawre: bento rows of the toy-paper series (kit .bx). The deck sits on the story column margin, like the
+ * social content tool page, and tiles stay square cornered. The post plates are white like the page, so each tile
+ * carries a 1px inset rule to keep its edge.
+ */
+[data-story="udte-bhawre"] .bx {
+  --bx-r: 0px;
+  padding-inline: var(--story-x);
+}
+
+[data-story="udte-bhawre"] .bx__m {
+  position: relative;
+}
+
+[data-story="udte-bhawre"] .bx__m::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 0 1px rgba(15, 15, 14, 0.08);
+  pointer-events: none;
+}

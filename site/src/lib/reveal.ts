@@ -10,6 +10,7 @@ import { DUR, ScrollTrigger, SplitText, d, gsap, reducedMotion, whenIdle } from 
  *   data-reveal="up"        a block (row, card) that lifts 24px and fades in
  *   data-reveal="scramble"  short label text resolves through random glyphs
  *   data-reveal="media"     a wrapper whose clip-path wipes open while its first child scales 1.2 to 1
+ *   data-reveal="tile"      a deck tile that lifts 12px and fades in, once its media has decoded
  *   data-parallax           a .plx wrapper; its .plx__in child drifts with scroll
  *   data-delay="0.2"        optional extra delay in seconds, on any of the above
  *   data-reveal-now         reveal on mount instead of on scroll (heroes)
@@ -46,6 +47,24 @@ export function revealOne(el: HTMLElement, index = 0): gsap.core.Animation | nul
       ease: "none",
       scrambleText: { text, chars: "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", revealDelay: 0.25, speed: 0.8 },
     });
+  }
+  if (kind === "tile") {
+    /* The deck reveal: a short lift and fade, light enough to sit through on every visit */
+    return gsap.fromTo(
+      el,
+      { y: 12, autoAlpha: 0 },
+      {
+        y: 0,
+        autoAlpha: 1,
+        duration: d(0.5),
+        ease: "power3.out",
+        delay,
+        onComplete: () => {
+          el.dataset.revealed = "1";
+          gsap.set(el, { clearProps: "transform,opacity,visibility" });
+        },
+      },
+    );
   }
   if (kind === "media") {
     const inner = el.firstElementChild as HTMLElement | null;
@@ -99,7 +118,7 @@ export function mountReveals(root: HTMLElement): () => void {
   });
 
   const play = async (el: HTMLElement) => {
-    if (el.dataset.reveal === "media") await mediaReady(el);
+    if (el.dataset.reveal === "media" || el.dataset.reveal === "tile") await mediaReady(el);
     if (dead) return;
     const anim = revealOne(el, order.get(el) ?? 0);
     if (anim) anims.push(anim);

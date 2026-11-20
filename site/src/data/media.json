@@ -94,6 +94,11 @@
   "h": 742,
   "video": true
  },
+ "armoriq-platform/clip-kill-crop": {
+  "w": 1400,
+  "h": 620,
+  "video": true
+ },
  "armoriq-platform/clip-persona": {
   "w": 1440,
   "h": 900,
@@ -105,9 +110,8 @@
   "video": true
  },
  "armoriq-platform/cover": {
-  "w": 1582,
-  "h": 1118,
-  "video": true
+  "w": 1600,
+  "h": 2000
  },
  "armoriq-platform/graph-empty": {
   "w": 1560,
@@ -129,6 +133,30 @@
   "w": 1960,
   "h": 720
  },
+ "armoriq-platform/m-desk": {
+  "w": 2400,
+  "h": 1500
+ },
+ "armoriq-platform/m-hands": {
+  "w": 2400,
+  "h": 1500
+ },
+ "armoriq-platform/m-phone-a": {
+  "w": 2400,
+  "h": 1500
+ },
+ "armoriq-platform/m-phone-b": {
+  "w": 2400,
+  "h": 1500
+ },
+ "armoriq-platform/m-plinth": {
+  "w": 2400,
+  "h": 1500
+ },
+ "armoriq-platform/m-sofa": {
+  "w": 2400,
+  "h": 1500
+ },
  "armoriq-platform/mcp-peek": {
   "w": 1460,
   "h": 1480
@@ -136,6 +164,120 @@
  "armoriq-platform/overview": {
   "w": 2000,
   "h": 1250
+ },
+ "armoriq-platform/s-agent": {
+  "w": 2400,
+  "h": 1294
+ },
+ "armoriq-platform/s-apikey": {
+  "w": 2400,
+  "h": 1298
+ },
+ "armoriq-platform/s-approval": {
+  "w": 828,
+  "h": 740
+ },
+ "armoriq-platform/s-chip": {
+  "w": 1391,
+  "h": 836
+ },
+ "armoriq-platform/s-create": {
+  "w": 1361,
+  "h": 1301
+ },
+ "armoriq-platform/s-empty": {
+  "w": 2400,
+  "h": 1317
+ },
+ "armoriq-platform/s-flow": {
+  "w": 2400,
+  "h": 1291
+ },
+ "armoriq-platform/s-graph": {
+  "w": 2400,
+  "h": 1304
+ },
+ "armoriq-platform/s-login": {
+  "w": 2400,
+  "h": 1302
+ },
+ "armoriq-platform/s-operate": {
+  "w": 1469,
+  "h": 1109
+ },
+ "armoriq-platform/s-palette": {
+  "w": 830,
+  "h": 800
+ },
+ "armoriq-platform/s-peek": {
+  "w": 2400,
+  "h": 1823
+ },
+ "armoriq-platform/s-policy": {
+  "w": 2400,
+  "h": 1300
+ },
+ "armoriq-platform/s-routing": {
+  "w": 1200,
+  "h": 1130
+ },
+ "armoriq-platform/s-security": {
+  "w": 2400,
+  "h": 1297
+ },
+ "armoriq-platform/s-stats": {
+  "w": 1469,
+  "h": 1153
+ },
+ "armoriq-platform/s-type": {
+  "w": 1695,
+  "h": 464
+ },
+ "armoriq-platform/t-approval": {
+  "w": 1656,
+  "h": 1480
+ },
+ "armoriq-platform/t-found": {
+  "w": 2400,
+  "h": 1145
+ },
+ "armoriq-platform/t-palette": {
+  "w": 1660,
+  "h": 1600
+ },
+ "armoriq-platform/t-type": {
+  "w": 2400,
+  "h": 657
+ },
+ "armoriq-platform/v-close": {
+  "w": 1920,
+  "h": 534,
+  "video": true
+ },
+ "armoriq-platform/v-header": {
+  "w": 1920,
+  "h": 1080,
+  "video": true
+ },
+ "armoriq-platform/v-inty": {
+  "w": 1920,
+  "h": 1080,
+  "video": true
+ },
+ "armoriq-platform/v-nav": {
+  "w": 1920,
+  "h": 982,
+  "video": true
+ },
+ "armoriq-platform/v-sorter": {
+  "w": 1920,
+  "h": 1190,
+  "video": true
+ },
+ "armoriq-platform/v-wall": {
+  "w": 1920,
+  "h": 1080,
+  "video": true
  },
  "armoriq-platform/v1-builder": {
   "w": 2000,
@@ -177,9 +319,8 @@
   "video": true
  },
  "armortools/cover": {
-  "w": 1544,
-  "h": 1080,
-  "video": true
+  "w": 1280,
+  "h": 1600
  },
  "armortools/detail-ask": {
   "w": 2000,
@@ -217,9 +358,183 @@
   "w": 1160,
   "h": 1640
  },
+ "armortools/p-allnight": {
+  "w": 2160,
+  "h": 2700
+ },
+ "armortools/p-bento": {
+  "w": 2160,
+  "h": 2700
+ },
+ "armortools/p-briefing": {
+  "w": 2400,
+  "h": 1350
+ },
+ "armortools/p-cost": {
+  "w": 2160,
+  "h": 2700
+ },
+ "armortools/p-diptych": {
+  "w": 2400,
+  "h": 1350
+ },
+ "armortools/p-four": {
+  "w": 2160,
+  "h": 2700
+ },
+ "armortools/p-keys": {
+  "w": 2400,
+  "h": 1350
+ },
+ "armortools/p-policies": {
+  "w": 2160,
+  "h": 2700
+ },
+ "armortools/p-setup": {
+  "w": 2400,
+  "h": 1350
+ },
+ "armortools/p-shadow": {
+  "w": 2400,
+  "h": 1350
+ },
  "armortools/policies": {
   "w": 2000,
   "h": 1226
+ },
+ "armortools/s-allnight": {
+  "w": 1080,
+  "h": 1350
+ },
+ "armortools/s-bento": {
+  "w": 1056,
+  "h": 1124
+ },
+ "armortools/s-c1": {
+  "w": 1520,
+  "h": 824
+ },
+ "armortools/s-c2": {
+  "w": 1520,
+  "h": 824
+ },
+ "armortools/s-c3": {
+  "w": 1520,
+  "h": 824
+ },
+ "armortools/s-c4": {
+  "w": 1520,
+  "h": 824
+ },
+ "armortools/s-chat": {
+  "w": 2400,
+  "h": 1600
+ },
+ "armortools/s-cost": {
+  "w": 1080,
+  "h": 1130
+ },
+ "armortools/s-diptych": {
+  "w": 1920,
+  "h": 1080
+ },
+ "armortools/s-four": {
+  "w": 1080,
+  "h": 1350
+ },
+ "armortools/s-policies": {
+  "w": 2002,
+  "h": 1544
+ },
+ "armortools/s-rule": {
+  "w": 2002,
+  "h": 1316
+ },
+ "armortools/s-signup": {
+  "w": 2400,
+  "h": 1696
+ },
+ "armortools/s-team": {
+  "w": 2002,
+  "h": 1212
+ },
+ "armortools/v-film": {
+  "w": 1920,
+  "h": 1080,
+  "video": true
+ },
+ "armortools/v-range": {
+  "w": 1920,
+  "h": 1080,
+  "video": true
+ },
+ "dash/b01-cover": {
+  "w": 1920,
+  "h": 1405
+ },
+ "dash/b02-brief": {
+  "w": 1920,
+  "h": 1586
+ },
+ "dash/b05-tablet": {
+  "w": 1920,
+  "h": 1617
+ },
+ "dash/b06-mobile": {
+  "w": 1920,
+  "h": 1080
+ },
+ "dash/b09-glow": {
+  "w": 1920,
+  "h": 1080
+ },
+ "dash/b10-volume": {
+  "w": 1920,
+  "h": 1080
+ },
+ "dash/b11-diaries": {
+  "w": 1920,
+  "h": 1080
+ },
+ "dash/b12-longmobile": {
+  "w": 1920,
+  "h": 1950
+ },
+ "dash/b16-type": {
+  "w": 1920,
+  "h": 1080
+ },
+ "dash/b17-colour": {
+  "w": 1920,
+  "h": 1080
+ },
+ "dash/b19-hero": {
+  "w": 1920,
+  "h": 1080
+ },
+ "dash/b20-burnvol": {
+  "w": 1920,
+  "h": 871
+ },
+ "dash/b22-brand": {
+  "w": 1920,
+  "h": 2565
+ },
+ "dash/b22b-social": {
+  "w": 1920,
+  "h": 1350
+ },
+ "dash/b23-compare": {
+  "w": 1920,
+  "h": 1080
+ },
+ "dash/b24-lineup": {
+  "w": 1920,
+  "h": 1757
+ },
+ "dash/b28-close": {
+  "w": 1920,
+  "h": 1080
  },
  "dash/clip-buy": {
   "w": 1110,
@@ -242,8 +557,8 @@
   "video": true
  },
  "dash/cover": {
-  "w": 2000,
-  "h": 1250
+  "w": 1920,
+  "h": 1316
  },
  "dash/iso-drawer": {
   "w": 896,
@@ -277,6 +592,18 @@
   "w": 780,
   "h": 1688,
   "video": true
+ },
+ "dash/p-billboard": {
+  "w": 1920,
+  "h": 1316
+ },
+ "dash/p-metro": {
+  "w": 1920,
+  "h": 1316
+ },
+ "dash/p-stage": {
+  "w": 1920,
+  "h": 1316
  },
  "dash/pdp-full": {
   "w": 1440,
@@ -608,6 +935,106 @@
   "w": 1440,
   "h": 900
  },
+ "platform-design-system/01": {
+  "w": 1920,
+  "h": 1500
+ },
+ "platform-design-system/02": {
+  "w": 1920,
+  "h": 1954
+ },
+ "platform-design-system/03": {
+  "w": 1920,
+  "h": 1081
+ },
+ "platform-design-system/04": {
+  "w": 1920,
+  "h": 1468
+ },
+ "platform-design-system/05": {
+  "w": 1920,
+  "h": 1465
+ },
+ "platform-design-system/06": {
+  "w": 1920,
+  "h": 2345
+ },
+ "platform-design-system/07": {
+  "w": 1920,
+  "h": 1940
+ },
+ "platform-design-system/08": {
+  "w": 1920,
+  "h": 1282
+ },
+ "platform-design-system/09": {
+  "w": 1920,
+  "h": 1907
+ },
+ "platform-design-system/10": {
+  "w": 1920,
+  "h": 1745
+ },
+ "platform-design-system/11": {
+  "w": 1920,
+  "h": 1081
+ },
+ "platform-design-system/12": {
+  "w": 1920,
+  "h": 2608
+ },
+ "platform-design-system/13": {
+  "w": 1920,
+  "h": 2261
+ },
+ "platform-design-system/14": {
+  "w": 1920,
+  "h": 1532
+ },
+ "platform-design-system/15": {
+  "w": 1920,
+  "h": 2148
+ },
+ "platform-design-system/16": {
+  "w": 1920,
+  "h": 1340
+ },
+ "platform-design-system/17": {
+  "w": 1920,
+  "h": 3266
+ },
+ "platform-design-system/18": {
+  "w": 1920,
+  "h": 1081
+ },
+ "platform-design-system/19": {
+  "w": 1920,
+  "h": 1840
+ },
+ "platform-design-system/20": {
+  "w": 1920,
+  "h": 1687
+ },
+ "platform-design-system/21": {
+  "w": 1920,
+  "h": 1876
+ },
+ "platform-design-system/22": {
+  "w": 1920,
+  "h": 1920
+ },
+ "platform-design-system/23": {
+  "w": 1920,
+  "h": 1001
+ },
+ "platform-design-system/all": {
+  "w": 1920,
+  "h": 1236
+ },
+ "platform-design-system/cover": {
+  "w": 1920,
+  "h": 1080
+ },
  "play/agent": {
   "w": 2000,
   "h": 1038,
@@ -897,8 +1324,8 @@
   "h": 1545
  },
  "smile-share/cover": {
-  "w": 1248,
-  "h": 897
+  "w": 1200,
+  "h": 900
  },
  "social-content-tool/01": {
   "w": 956,
@@ -975,8 +1402,98 @@
  },
  "udte-bhawre/cover": {
   "w": 2000,
-  "h": 1250,
-  "schematic": true
+  "h": 1500
+ },
+ "udte-bhawre/n-pim-spec": {
+  "w": 2000,
+  "h": 1500
+ },
+ "udte-bhawre/n-poster-bo": {
+  "w": 1600,
+  "h": 2000
+ },
+ "udte-bhawre/n-poster-penny": {
+  "w": 1600,
+  "h": 2000
+ },
+ "udte-bhawre/n-poster-pim": {
+  "w": 1600,
+  "h": 2000
+ },
+ "udte-bhawre/n-poster-tuck": {
+  "w": 1600,
+  "h": 2000
+ },
+ "udte-bhawre/n-poster-zip": {
+  "w": 1600,
+  "h": 2000
+ },
+ "udte-bhawre/n-team": {
+  "w": 2000,
+  "h": 1500
+ },
+ "udte-bhawre/n-tuck": {
+  "w": 2000,
+  "h": 1500
+ },
+ "udte-bhawre/p-approval": {
+  "w": 2400,
+  "h": 1800
+ },
+ "udte-bhawre/p-breaks": {
+  "w": 2400,
+  "h": 1800
+ },
+ "udte-bhawre/p-kite": {
+  "w": 2400,
+  "h": 1608
+ },
+ "udte-bhawre/p-pim": {
+  "w": 2160,
+  "h": 2700
+ },
+ "udte-bhawre/p-tuck": {
+  "w": 2160,
+  "h": 2700
+ },
+ "udte-bhawre/p-zip": {
+  "w": 2160,
+  "h": 2700
+ },
+ "udte-bhawre/v-home": {
+  "w": 1600,
+  "h": 900,
+  "video": true
+ },
+ "udte-bhawre/v-mark": {
+  "w": 1600,
+  "h": 1200,
+  "video": true
+ },
+ "udte-bhawre/v-states": {
+  "w": 1600,
+  "h": 900,
+  "video": true
+ },
+ "udte-bhawre/v-summon": {
+  "w": 1600,
+  "h": 900,
+  "video": true
+ },
+ "udte-bhawre/v-toss": {
+  "w": 1600,
+  "h": 900,
+  "video": true
+ },
+ "udte-bhawre/v-turn": {
+  "w": 1080,
+  "h": 1080,
+  "video": true
+ },
+ "udte-bhawre/v-welcome": {
+  "w": 1600,
+  "h": 1200,
+  "video": true
  },
  "verbx/01": {
   "w": 2000,

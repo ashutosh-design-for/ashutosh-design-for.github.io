@@ -159,3 +159,59 @@ export const storyRoot = (slug: string, sections: string, extra = "") =>
 
 /** The in-flow TL;DR toggle, for the first section's head aside */
 export const tldrInline = () => `<div class="sh__aside">${tldrButton("tldr--inline")}<span class="label sh__hint">Skim the whole page</span></div>`;
+
+/* ------------------------------------------------------------------ bento grid */
+
+/**
+ * One tile of a bento row. `f` is a media.json key; a video plays when it scrolls in. `bg` is the tile ground,
+ * `pad` insets the media so a screen floats on the ground, `fit` cover crops to fill (boards, photos), contain keeps
+ * the whole screen. `html` replaces the media with a text card.
+ */
+export type Tile = { f?: string; alt?: string; bg?: string; pad?: boolean; fit?: "cover" | "contain"; pos?: string; label?: string; html?: string; dark?: boolean };
+
+/** A cell is one tile, or a column of tiles stacked in the same cell */
+export type Cell = Tile | Tile[];
+
+/** A row: cells side by side. `w` are the column weights; leave it out and widths follow each media's aspect ratio. */
+export type Row = { cells: Cell[]; w?: number[]; ar?: number };
+
+const arOf = (t: Tile) => {
+  if (!t.f) return 1;
+  const { w, h } = MEDIA[t.f] ?? { w: 16, h: 10 };
+  return w / h;
+};
+
+function tile(base: string, t: Tile) {
+  const style = [t.bg ? `--bg:${t.bg}` : "", `--tar:${arOf(t).toFixed(4)}`, t.pos ? `--pos:${t.pos}` : ""].filter(Boolean).join(";");
+  const cls = ["bx__t", t.pad ? "bx__t--pad" : "", t.fit === "cover" ? "bx__t--cover" : "", t.html ? "bx__t--text" : "", t.dark ? "bx__t--dark" : ""].filter(Boolean).join(" ");
+  const label = t.label ? `<span class="bx__label label">${esc(t.label)}</span>` : "";
+  if (t.html) return `<div class="${cls}" style="${style}" data-reveal="up">${t.html}</div>`;
+  return `<figure class="${cls}" style="${style}"><div class="bx__m" data-reveal="tile"><div class="bx__in">${mediaTag(base, t.f!, t.alt ?? "")}</div></div>${label}</figure>`;
+}
+
+/** A column stack's aspect ratio: tiles of one width stacked, so 1 / sum(1 / ar) */
+const cellAr = (c: Cell) => (Array.isArray(c) ? 1 / c.reduce((s, t) => s + 1 / arOf(t), 0) : arOf(c));
+
+/**
+ * Bento rows. Each row has a fixed aspect ratio, so every tile in it shares one height; on phones the rows stack
+ * and each tile takes its media's own ratio. Tiles lift and fade in as they enter (data-reveal="tile").
+ */
+export function bento(base: string, rows: Row[], cls = "") {
+  return `<div class="bx${cls ? ` ${cls}` : ""}">${rows
+    .map((r) => {
+      const ws = r.w ?? r.cells.map(cellAr);
+      const ar = r.ar ?? (r.w ? undefined : ws.reduce((a, b) => a + b, 0));
+      /* Weights are normalised: fr values that sum below 1 would leave part of the row empty */
+      const total = ws.reduce((a, b) => a + b, 0);
+      const style = `grid-template-columns:${ws.map((w) => `minmax(0,${(w / total).toFixed(4)}fr)`).join(" ")}${ar ? `;--rar:${ar.toFixed(4)}` : ""}`;
+      const cells = r.cells.map((c) => (Array.isArray(c) ? `<div class="bx__col">${c.map((t) => tile(base, t)).join("")}</div>` : tile(base, c))).join("");
+      /* A row of only contained screens may letterbox, so it never grows taller than the viewport */
+      const cap = ar && r.cells.flat().every((t) => !t.html && t.fit !== "cover");
+      return `<div class="bx__row${ar ? "" : " bx__row--free"}${cap ? " bx__row--cap" : ""}" style="${style}">${cells}</div>`;
+    })
+    .join("")}</div>`;
+}
+
+/** A text break between bentos: the section head on its own, then the bento continues */
+export const chapter = (n: number, label: string, title: string, text: string, id: string, body = "") =>
+  `<section class="story__sec story__x bx-sec" aria-labelledby="${id}">${head(n, label, title, text, id)}${body}</section>`;

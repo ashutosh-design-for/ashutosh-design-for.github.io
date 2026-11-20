@@ -77,7 +77,7 @@ export const PROJECTS: Project[] = [
     shots: [
       {
         file: "armoriq-platform/cover",
-        alt: "ArmorIQ security posture overview switching between role views",
+        alt: "A hand holding a phone showing the ArmorIQ platform settings screen",
         caption: "Overview. One product, re-ordered per role, so the most useful security signal is first without forking the navigation.",
       },
       {
@@ -220,41 +220,25 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    slug: "armoriq-design-system",
-    name: "ArmorIQ design system",
-    headline: "A design system that works in Figma and in code",
+    slug: "platform-design-system",
+    name: "Platform design system",
+    headline: "One Figma library for the enterprise console, from tokens to the kill switch",
     summary:
-      "A portable interface system for ArmorIQ: tokens, component primitives, usage rules and a live showcase, so designers and developers build new surfaces with the same vocabulary.",
+      "The Figma side of ArmorIQ's enterprise design system: 43 components, 411 variants, 121 variables and 80 icons, in five layers across 50 pages.",
     org: "ArmorIQ",
     year: "2026",
-    role: ["Design systems", "UI engineering", "Documentation"],
+    role: ["Design systems", "Figma libraries", "Documentation"],
     kinds: ["system"],
     tier: "case",
     evidence: "Shipped",
-    problem: [
-      "A component library alone does not stop drift. New pages still bring one-off colours, spacing, controls and interaction states.",
-      "ArmorIQ needed a system that could be reused in the product and carried into other tools without depending on the original app.",
-    ],
     work: [
-      "I organised the system around semantic tokens, reusable primitives and documented patterns. A standalone showcase lets anyone inspect it visually.",
-      "Machine-readable token and component manifests, with usage guidance, let implementation tools (and the agents writing code now) find what already exists before adding another variant.",
-      "The kit travels: styles, source components, assets and documentation can be brought into a separate repository as one unit.",
+      "Foundations first, then components, then the product layer: approval cards, the agent kill switch and the setup wizard, all built from the same tokens in Light and Dark.",
     ],
-    decision: {
-      title: "A contract, not a reference file",
-      context: "Most systems are a Figma page people are encouraged to look at.",
-      choice:
-        "Repeated values are named, new UI is expected to use the shared tokens, and a new primitive earns its place only when a pattern recurs.",
-      cost: "A one-off is slower to ship. Sometimes a screen waits a day for the primitive it needs. That is the trade for the tenth page looking like the first.",
-    },
-    result: [
-      "A portable kit and a working showcase exist and are in use across ArmorIQ surfaces. No adoption or speed figure is claimed here until it is measured.",
-    ],
+    result: ["A Figma library of 43 components and 411 variants, documented page by page."],
     shots: [
       {
-        file: "armoriq-design-system/cover",
-        alt: "Status buttons cycling through Approving, Retrying, Rejecting, Scan now and Send invite states",
-        caption: "Components. Each primitive ships with its states, including the in-between ones like approving and retrying.",
+        file: "platform-design-system/cover",
+        alt: "Command menu, approval cards, toasts and agent cards from the Platform design system, tilted over an orange band",
       },
     ],
   },
@@ -333,8 +317,8 @@ export const PROJECTS: Project[] = [
     shots: [
       {
         file: "armortools/cover",
-        alt: "ArmorIQ Tools sidebar opening over a gradient background",
-        caption: "Navigation. Runs, plans and policies one level apart.",
+        alt: "ArmorIQ Tools chat home: the chats list, the ask box and the daily briefing over a warm blurred background",
+        caption: "Chat. One box to ask about runs, plans and policies.",
       },
     ],
   },
@@ -366,7 +350,7 @@ export const PROJECTS: Project[] = [
     result: ["Social Impact Award at the 2024 hackathon. This is a design concept, with no launch, donation total or measured outcome claimed."],
     links: [{ label: "Case study", href: "https://flaxen-silk-89d.notion.site/Smile-Share-UX-Case-Study-89b1c0c337cc4679b87775ec3edceb11" }],
     shots: [
-      { file: "smile-share/cover", alt: "Three phones: campaign page, featured campaign and share smiles screen" },
+      { file: "smile-share/cover", alt: "Two phones on dark rock showing the campaign page and a featured campaign" },
       { file: "smile-share/01", alt: "Phone on a concrete block showing a campaign screen" },
       {
         file: "smile-share/02",
@@ -460,7 +444,7 @@ export const PROJECTS: Project[] = [
       cost: "The brand story moves down the page, which a brand team has to agree to.",
     },
     result: ["A working prototype and an assignment deliverable. Not evidence of a conversion lift."],
-    shots: [{ file: "dash/cover", alt: "DASH home page: take a shot, it's time to dash, beside the Glow box and bottles on coral" }],
+    shots: [{ file: "dash/cover", alt: "A Dash of Burn poster inside a metro carriage" }],
   },
   {
     slug: "papersseum",
@@ -482,24 +466,6 @@ export const PROJECTS: Project[] = [
     shots: [{ file: "papersseum/cover", alt: "Papersseum home: the wordmark beside a live arena where five pixel bots fight for territory" }],
   },
   {
-    slug: "navu-kavacha",
-    name: "Navu Kavacha",
-    headline: "A shared record for every bin of restaurant waste, owned by the people who move it",
-    summary:
-      "Navu Kavacha turns the hand-off of restaurant wet waste in Bengaluru into a record both sides sign. I reframed the brief from scheduling to trust, designed the collector and restaurant apps around two-touch handovers, and built a presenter that plays twelve flows.",
-    org: "IIITDM Jabalpur",
-    year: "2026",
-    role: ["Product strategy", "Product design", "Frontend"],
-    kinds: ["product", "concept"],
-    tier: "case",
-    evidence: "Live prototype",
-    work: [
-      "I replaced a rating-and-tiers concept with a handover record: two touches on the collector's phone become a receipt for the kitchen and a work passbook the collector owns.",
-    ],
-    result: ["Twelve flows and 57 steps playable in the presenter, in Kannada, Tamil and English."],
-    shots: [{ file: "navu-kavacha/cover", alt: "Three phones in the Navu Kavacha presenter: the collector's done screen, the restaurant's receipt and a WhatsApp message" }],
-  },
-  {
     slug: "udte-bhawre",
     name: "Udte Bhawre",
     headline: "AI companions that live beside the work",
@@ -515,7 +481,7 @@ export const PROJECTS: Project[] = [
       "The interesting part is the movement between a lightweight prompt and a more capable control centre, and how the companion stays available without getting in the way.",
     ],
     result: ["An Electron app with a demo, built as a team."],
-    shots: [{ file: "udte-bhawre/cover", alt: "Schematic of a taskbar with small companion characters and a chat popover" }],
+    shots: [{ file: "udte-bhawre/cover", alt: "The Udte Bhawre crew, Bo, Pim, Tuck, Zip and Penny, peeking over their cards" }],
   },
 ];
 

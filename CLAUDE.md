@@ -10,6 +10,7 @@ Any work on a project's case page (`/work/<slug>/`), its copy, its captures or i
 - **Story kit:** `site/src/templates/stories/kit.ts`, `site/src/views/stories/kit.ts`, `site/src/styles/story.css`. A story is `templates/stories/<slug>.ts` + `views/stories/<slug>.ts` + `styles/stories/<slug>.css`, picked up by filename. Start one with the skill's `new_story.py`.
 - **Quality floor:** the DASH page. Score every story with `score_page.py` before reporting.
 - **Working files:** `case-studies/<slug>/` (BUILD-LOG, copy, deck, MOCKUPS). Captures in `.shots/<slug>/` and tools in `.shots/tools/`, both untracked.
+- **Mockups:** made by the `mockup` skill (a generated photo with the real capture pinned on the screen), in `.shots/mockups/<slug>/`. Approved ones and monthly capacity: vault `20 Areas\Case Studies\Mockup system.md`.
 
 ## Always
 
